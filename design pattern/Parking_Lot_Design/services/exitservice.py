@@ -23,21 +23,13 @@ class ExitService:
 
         duration = datetime.datetime.now() - ticket.entry_time
         hours_parked = duration.total_seconds() / 3600
+        hours_parked = 3
         base_amount = 5.0 * hours_parked  # Assuming $5 per hour
 
         # Calculate final amount using BillService
         final_amount = bill_service.calculate_amount(ticket, base_amount)
 
-        # Generate bill
+        # Generate bill`
         bill = bill_service.generate_bill(ticket, final_amount)
 
         return bill
-        #
-        # # Process payment (Assuming payment is always successful for simplicity)
-        # payment = Payment(bill=bill, amount=bill.amount, payment_method="Credit Card", status="Completed")
-        # self.payment_repo.add(payment)
-        #
-        # # Mark the ticket as paid
-        # ticket.is_paid = True
-        #
-        # return payment

@@ -8,6 +8,8 @@ from Parking_Lot_Design.repository.ticketrepository import TicketRepository
 from Parking_Lot_Design.repository.userrepository import UserRepository
 from Parking_Lot_Design.repository.spotrepository import SpotRepository
 
+from Parking_Lot_Design.models.user import User
+
 class EntryService:
     def __init__(self, user_repo: UserRepository, vehicle_repo: VehicleRepository, ticket_repo: TicketRepository,spot_repo:SpotRepository):
         self.user_repo = user_repo
@@ -49,7 +51,7 @@ class EntryService:
         if not spot:
             raise Exception("No available spots for this vehicle type")
         # Create ticket
-        ticket = ticket_service.create_ticket(vehicle, spot,user.entry_gate)
+        ticket = ticket_service.create_ticket(vehicle, spot,user.entry_gate,user)
 
         return ticket
 

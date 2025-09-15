@@ -1,9 +1,9 @@
 from uuid import uuid4
 from Parking_Lot_Design.models.spot import Spot
 class Floor:
-    def __init_(self,floor_number:int):
+    def __init__(self,floor_number:int):
         self.id = uuid4()
-        self.floor_number = None
+        self.floor_number = floor_number
         self.spots = []
 
     def add_spot(self,spot:Spot):

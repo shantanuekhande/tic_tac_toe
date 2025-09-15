@@ -6,3 +6,4 @@ class ParkingLot:
         self.location = location
         self.number_of_floors = number_of_floors
         self.number_of_spots_per_floor = number_of_spots_per_floor
+        self.floors = []    # List of Floor objects

@@ -5,9 +5,9 @@ from Parking_Lot_Design.models.bill import Bill
 
 
 class PaymentService:
-    def __init__(self):
-        self.payment_repo = PaymentRepository()
-        self.bill_repo = BillRepository()
+    def __init__(self,payment_repo:PaymentRepository,bill_repo:BillRepository):
+        self.payment_repo = payment_repo
+        self.bill_repo = bill_repo
 
     def process_payment(self, bill: Bill ,payments) -> Bill:
         for payment in payments:
