@@ -6,6 +6,9 @@ class User:
         self.userName = userName
         self.userType = userType
         self.Vehicles = []
+        self.email = None
+        self.phone = None
+
     def add_vehicle(self, vehicle):
         self.Vehicles.append(vehicle)
     def remove_vehicle(self, vehicle):

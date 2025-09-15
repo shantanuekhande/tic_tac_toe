@@ -1,15 +1,18 @@
 from Parking_Lot_Design.repository.userrepository import UserRepository
 class UserService:
-    def __init__(self,user):
-        self.user_repo = UserRepository()
+    def __init__(self,user, user_repo: UserRepository):
+        self.user_repo = user_repo
         self.user = user
 
-    def check_and_add_user(self,user):
+    def add_user(self,user):
         existing_user = self.user_repo.get_by_id(user.id)
         if existing_user:
             return existing_user
         else:
             return self.user_repo.add(user)
+
+    def remove_user(self, user_id):
+        return self.user_repo.remove(user_id)
 
     def add_vehicle_to_user(self,user_id,vehicle):
         user = self.user_repo.get_by_id(user_id)
@@ -19,7 +22,6 @@ class UserService:
         else:
             raise ValueError("User not found")
 
-
     def remove_vehicle_from_user(self,user_id,vehicle):
         user = self.user_repo.get_by_id(user_id)
         if user:
@@ -28,5 +30,4 @@ class UserService:
         else:
             raise ValueError("User not found")
 
-    def remove_user(self,user_id):
-        return self.user_repo.remove(user_id)
+
